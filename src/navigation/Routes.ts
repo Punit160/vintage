@@ -1,0 +1,166 @@
+
+import { ComponentType } from 'react';
+import LoginScreen from '../screens/LoginScreen';
+import SignupScreen from '../screens/SignupScreen';
+import HomeScreen from '../screens/HomeScreen';
+import SubscriptionScreen from '../components/CommonSubscription';
+import ProfileScreen from '../screens/ProfileScreen';
+import ImageScreen from '../screens/ImageScreen';
+import EditProfileScreen from '../screens/ProfileTab/EditProfileScreen';
+import NotificationsScreen from '../screens/ProfileTab/NotificationsScreen';
+import SettingsScreen from '../screens/ProfileTab/SettingsScreen';
+import TermsScreen from '../screens/ProfileTab/TermsScreen';
+import SubscriptionandFeature from '../screens/SubscriptionandFeature';
+import CategoryDetailScreen from '../screens/CategoryDetailScreen';
+import DailyJournalScreen from '../screens/DailyJournalScreen';
+import HomeGame from '../screens/Game/HomeGame';
+import BoxBreathingGame from '../screens/Game/BoxBreathingGame';
+import ScoresScreen from '../screens/Game/ScoresScreen';
+import TapHappyGame from '../screens/Game/TapHappyGame';
+import PaymentWebView from '../screens/PaymentWebView';
+import PaymentSuccessScreen from '../screens/PaymentSuccessScreen';
+import ConsultScreen from '../screens/ConsultScreen';
+import VideoMeetingScreen from '../components/BookinMeet/VideoMeetingScreen';
+import SubscriptionDetailsScreen from '../screens/SubscriptionDetails';
+import ExtraFeeScreen from '../screens/ExtraFeeScreen';
+import ResetPasswordScreen from '../components/ResetPassword';
+import ForgotPasswordScreen from '../components/ForgotPassword';
+import ClinicianProfileScreen from '../screens/ClinicianProfileScreen';
+
+// ----------------------
+// 1️⃣ Route Types
+// ----------------------
+export interface RouteConfig<T extends string = string> {
+  name: T;
+  component: ComponentType<any>;
+  options?: any;
+  icon?: string;
+  showBackButton?: boolean;
+  color?: string;
+}
+
+// ----------------------
+// 2️⃣ Centralized Route Names
+// ----------------------
+export const AuthStackRoutes = {
+  Login: 'Login',
+  Signup: 'Signup',
+  Onboard: 'Onboard',
+  EditProfileScreen: 'Edit Profile',
+  NotificationsScreen: 'Notifications',
+  SettingsScreen: 'Settings',
+  TermsScreen: 'Terms & Conditions',
+  HelpScreen: 'My Subscription Plan',
+  Subscription: 'Subscription',
+  CategoryDetail: 'Health Topic',
+  Journal: 'Journal',
+  HomeGame: 'home',
+  BoxBreathing: 'breathing',
+  TapHappy: 'tapHappy',
+  Scores: 'scores',
+  PaymentWebView: 'PaymentWebView',
+  PaymentSuccess: 'PaymentSuccess',
+  VideoMeeting: 'Video',
+  SubscriptionDetails: 'SubscriptionDetails',
+  Main:"Main",
+  ExtraFee:"ExtraFee",
+  ResetPassword:'ResetPassword',
+  ForgotPassword:"ForgotPassword",
+  ClinicianProfile: 'Your Clinician',
+} as const;
+
+export const MainTabRoutes = {
+  Home: 'Home',
+  Consults: 'Consults',
+  Profile: 'Profile',
+} as const;
+
+// ----------------------
+// 3️⃣ Auth Stack Routes
+// ----------------------
+export const authRoutes: RouteConfig[] = [
+  { name: AuthStackRoutes.Login, component: LoginScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.Signup, component: SignupScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.Onboard, component: ImageScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.EditProfileScreen, component: EditProfileScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.NotificationsScreen, component: NotificationsScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.SettingsScreen, component: SettingsScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.TermsScreen, component: TermsScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.HelpScreen, component: SubscriptionandFeature, options: { headerShown: true } },
+  { name: AuthStackRoutes.Subscription, component: SubscriptionScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.CategoryDetail, component: CategoryDetailScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.Journal, component: DailyJournalScreen, options: { headerShown: true } },
+  { name: AuthStackRoutes.HomeGame, component: HomeGame, options: { headerShown: false } },
+  { name: AuthStackRoutes.BoxBreathing, component: BoxBreathingGame, options: { headerShown: true } },
+  { name: AuthStackRoutes.TapHappy, component: TapHappyGame, options: { headerShown: false } },
+  { name: AuthStackRoutes.Scores, component: ScoresScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.PaymentWebView, component: PaymentWebView, options: { headerShown: false } },
+  { name: AuthStackRoutes.PaymentSuccess, component: PaymentSuccessScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.VideoMeeting, component: VideoMeetingScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.SubscriptionDetails, component: SubscriptionDetailsScreen, options: { headerShown: true, title: 'Subscription Detail' } },
+  { name: AuthStackRoutes.ExtraFee, component: ExtraFeeScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.ResetPassword, component: ResetPasswordScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.ForgotPassword, component: ForgotPasswordScreen, options: { headerShown: false } },
+  { name: AuthStackRoutes.ClinicianProfile, component: ClinicianProfileScreen, options: { headerShown: true, title: 'Your Clinician' } },
+];
+
+// ----------------------
+// 4️⃣ Main Tab Routes
+// ----------------------
+export const mainRoutes: RouteConfig[] = [
+  { name: MainTabRoutes.Home, component: HomeScreen, icon: 'home', options: { headerShown: false,back:false }, color: 'red' },
+  { name: MainTabRoutes.Consults, component: ConsultScreen, icon: 'message-text', options: { headerShown: true, title: 'Messages', back: false }, color: 'blue' },
+  { name: MainTabRoutes.Profile, component: ProfileScreen, icon: 'account', options: { headerShown: true, title: 'Account', back: false }, color: 'pink' },
+];
+
+// ----------------------
+// 5️⃣ Stack Param Lists (IMPORTANT)
+// ----------------------
+
+export type AuthStackParamList = {
+  Splash: undefined;
+  Login: undefined;
+  Signup: undefined;
+  Onboard: undefined;
+  'Edit Profile': undefined;
+  Notifications: undefined;
+  Settings: undefined;
+  'Terms & Conditions': undefined;
+  'My Subscription Plan': undefined;
+  Subscription: undefined;
+  'Health Topic': { item?: any; categoryId?: string } | undefined;
+  Journal: undefined;
+  home: undefined;
+  breathing: undefined;
+  tapHappy: undefined;
+  scores: undefined;
+  PaymentWebView: { url?: string; paymentUrl?: string } | undefined;
+  PaymentSuccess: undefined;
+  Video: { channel?: string; token?: string; meeting?: any } | undefined;
+  SubscriptionDetails: {
+    plan: any;
+    isYearly?: boolean;
+    userId?: string | null;
+    extraAmount?: any;
+    totalAmount?: any;
+    extraAmountT?: any;
+    finalPrice?: string;
+  };
+  Main: undefined;
+  ExtraFee: { fee?: any } | undefined;
+  ResetPassword: { email?: string } | undefined;
+  ForgotPassword: undefined;
+  'Your Clinician': undefined;
+};
+
+export type MainTabParamList = {
+  Home: undefined;
+  Consults: undefined;
+  Profile: undefined;
+};
+
+// ----------------------
+// ✅ Usage Examples
+// ----------------------
+// navigation.navigate(AuthStackRoutes.Login)
+// navigation.navigate(MainTabRoutes.Home)
