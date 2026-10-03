@@ -67,6 +67,14 @@ yarn-error.log
 # testing
 /coverage
 
+# Native projects, secrets, and uploads stay off Git
+/android/
+/ios/
+.env
+.env.*
+!.env.example
+uploads/
+
 # Yarn
 .yarn/*
 !.yarn/patches
